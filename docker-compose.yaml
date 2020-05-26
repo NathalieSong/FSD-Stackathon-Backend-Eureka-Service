@@ -1,0 +1,14 @@
+version: "3"
+services:
+  emart-eureka-service:
+    image: emart-eureka-service:latest
+    ports:
+      - "9000:9000"
+    environment:
+      - EUREKA_URL=http://localhost:9000/eureka
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    network_mode: "host"
