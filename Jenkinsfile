@@ -9,11 +9,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                echo 'Building...'
                 sh 'mvn clean package -DskipTests=true'
             }
         }
         stage('Docker Build') {
             steps {
+                echo 'Docker Building...'
                 sh 'docker-compose down'
                 sh 'docker image rm emart-eureka-service'
                 sh 'docker build . -t emart-eureka-service'
@@ -21,6 +23,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+                echo 'Deploying...'
                 sh 'docker-compose up -d'
             }
         }
