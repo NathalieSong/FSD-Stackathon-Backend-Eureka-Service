@@ -10,6 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
+                git credentialsId: 'github', url: 'https://github.com/NathalieSong/FSD-Stackathon-Backend-Eureka-Service.git'
                 sh 'mvn clean package -DskipTests=true'
             }
         }
