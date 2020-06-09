@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages {
         stage('Build') {
-            withMaven(maven: 'maven-3.6.1') {
+            steps {
                 sh 'mvn clean package -DskipTests=true'
             }
         }
